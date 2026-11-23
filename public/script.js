@@ -59,6 +59,12 @@ async function searchPlaces(){
 }
 
 
+function formatDistance(metres){
+    if (metres == null) return '-';
+    return metres < 1000 ? `${Math.round(metres)} m` : `${(metres/1000).toFixed(1)} km`;
+}
+
+
 function showPlaces(){
     return
 }
