@@ -41,9 +41,21 @@ async function searchPlaces(){
         }
 
         currentPlaces = data.places;
-    } catch (error) {
-        console.error('Error fetching search results:', error);
-    }
+
+        statusDiv.textContent = currentPlaces.length
+          ? `${currentPlaces.length} places found near ${data.label}`
+          : 'Nothing found, try a bigger radius';
+
+
+        showPlaces();
+    } catch (err) {
+        statusDiv.textContent = err instanceof TypeError
+        ? 'Could not reach the server, please try again'
+        : err.message;
+        statusDiv.classList.add('error');
+  } finally {
+    searchBtn.disabled = false;
+  }
 }
 
 
