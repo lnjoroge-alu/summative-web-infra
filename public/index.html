@@ -29,6 +29,7 @@
                             <option value="commercial.supermarket">Supermarket</option>
                     </select>
                 </label>
+
                 <label>Radius (km)
                     <select id="radius">
                         <option value="500">0.5 km</option>
@@ -37,10 +38,28 @@
                         <option value="5000">5 km</option>
                     </select>
                 </label>
+
                 <button type="submit" id="search-btn">Search</button>
             </form>
 
+            <div class="toolbar">
+                <label>Sort by
+                    <select id="sort">
+                        <option value="distance">Nearest first</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </label>
+                
+                <label>Filter by name
+                    <input id="filter" type="search">
+                </label>
 
+                <label class="checkbox">
+                    <input id="phone-only" type="checkbox">
+                    Only places with phone number
+                </label>
+
+            </div>
 
 
         </main>
