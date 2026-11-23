@@ -26,6 +26,12 @@ async function searchPlaces(){
         radius: document.getElementById('radius').value,
     });
 
+    statusDiv.textContent = 'Searching...';
+    statusDiv.classList.remove('error');
+    searchBtn.disabled = true;
+    currentPlaces = [];
+    showPlaces();
+
     try {
         const response = await fetch(`/api/places?${params}`);
         const data = await response.json();
@@ -33,4 +39,9 @@ async function searchPlaces(){
     } catch (error) {
         console.error('Error fetching search results:', error);
     }
+}
+
+
+function showPlaces(){
+    return
 }
