@@ -35,7 +35,12 @@ async function searchPlaces(){
     try {
         const response = await fetch(`/api/places?${params}`);
         const data = await response.json();
-        console.log(data);
+
+        if (!response.ok){
+            throw new Error(data.error || 'Something went wrong');
+        }
+
+        currentPlaces = data.places;
     } catch (error) {
         console.error('Error fetching search results:', error);
     }
