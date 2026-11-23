@@ -9,6 +9,11 @@ const phoneOnly = document.getElementById('phone-only');
 
 let currentPlaces = [];
 
+sortSelect.addEventListener('change', showPlaces);
+filterInput.addEventListener('input', showPlaces);
+phoneOnly.addEventListener('change', showPlaces);
+
+
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
     await searchPlaces();
