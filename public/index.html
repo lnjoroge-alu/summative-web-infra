@@ -59,6 +59,22 @@
                     Only places with phone number
                 </label>
 
+                <p id="status"> Type an area, then press Search</p>
+
+                <div class="table-wrap">
+                    <table id="results-table" hidden>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Distance</th>
+                                <th>Phone</th>
+                                <th>Map</th>
+                            </tr>
+                        </thead>
+                        <tbody id="results"></tbody>
+                    </table>
+                </div>
             </div>
 
 
@@ -66,7 +82,7 @@
 
           <footer>
             Powered by <a href="https://www.geoapify.com/">Geoapify</a> ·
-            Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>
+            Map data by <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>
         </footer>
         <script src="script.js"></script>
     </body>
