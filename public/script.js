@@ -1,5 +1,13 @@
 const form = document.getElementById('search-form');
 const searchBtn = document.getElementById('search-btn');
+const statusDiv = document.getElementById('status');
+const table = document.getElementById('results-table');
+const rows = document.getElementById('results');
+const sortSelect = document.getElementById('sort');
+const filterInput = document.getElementById('filter');
+const phoneOnly = document.getElementById('phone-only');
+
+let currentPlaces = [];
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
