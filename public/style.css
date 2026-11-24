@@ -20,3 +20,25 @@ form, .toolbar {
 }
 
 form {background: #fff; border: 1px solid #d5dbe2; border-radius: 10px; padding: 16px;}
+
+label {display: flex; flex-direction: column; gap: 4px; font-weight: 600; font-size: 0.9rem;}
+label.checkbox { flex-direction: row; align-items: center; font-weight: 400;}
+
+input[type='text'], input[type='search'], select, button {
+    font: inherit;
+    padding: 10px;
+    border: 1px solid #8a95a3;
+    border-radius: 8px;
+}
+
+button {
+    font-weight: 600;
+    padding: 10px 20px;
+    border-color: #0b6a4f;
+    background: #0b6a4f;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:disabled {opacity: 0.6;}
+
