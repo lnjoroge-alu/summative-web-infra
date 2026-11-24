@@ -27,12 +27,18 @@ app.get('/api/places', async (req,res) => {
     const cacheKey = `${area.trim().toLowerCase()} | ${category} | ${radius}`;
 
     const cached = cache.get(cacheKey);
-    if (cached && Date.now() - cached.time < CACHE_TIL){
+    if (cached && Date.now() - cached.time < CACHE_TTL){
         res.set('X-Cache', 'HIT');
         return res.json(cached.data);
     }
-}
-)
+
+    try {
+        // fetch data from API
+    } catch (err){
+        console.error(err);
+        res.status(500).json({error: 'Internal server error'});
+    }
+});
 
 
 
