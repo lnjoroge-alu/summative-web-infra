@@ -50,3 +50,14 @@ table {width: 100%; min-width: 640px; border-collapse: collapse; background: #ff
 th, td {padding:10px 12px; text-align: left; border-bottom: 1px solid #d5dbe2;}
 th { background: #e3f2ec;}
 
+.map-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: #0b6a4f;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.map-btn:hover { background: #08513c;}
