@@ -62,17 +62,21 @@ app.get('/api/places', async (req,res) => {
 
         const places = placesData.features.map(({ properties: prop }) => ({
             name: prop.name,
-            address: prop.fomratted,
+            address: prop.formatted,
             distance: prop.distance,
             lat: prop.lat,
             lon:prop.lon,
             phone: prop.contact?.phone || prop.datasource?.raw?.phone || null,
         }));
 
+        const data = {label: location.formatted, places};
+        cache.set(cacheKey, {data, time: Date.now() });
+        res.set('X-Cache', 'MISS');
+        res.json(data);
         
     } catch (err){
         console.error(err);
-        res.status(500).json({error: 'Internal server error'});
+        res.status(500).json({error: 'Could not reach map service'});
     }
 });
 
