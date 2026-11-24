@@ -42,3 +42,11 @@ button {
 
 button:disabled {opacity: 0.6;}
 
+#status { font-weight: 600;}
+#status.error {color: #a4161a;}
+
+.table-wrap {overflow-x: auto;}
+table {width: 100%; min-width: 640px; border-collapse: collapse; background: #fff;}
+th, td {padding:10px 12px; text-align: left; border-bottom: 1px solid #d5dbe2;}
+th { background: #e3f2ec;}
+
