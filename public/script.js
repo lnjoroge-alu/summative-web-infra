@@ -45,9 +45,8 @@ async function searchPlaces(){
         statusDiv.textContent = currentPlaces.length
           ? `${currentPlaces.length} places found near ${data.label}`
           : 'Nothing found, try a bigger radius';
-
-
         showPlaces();
+
     } catch (err) {
         statusDiv.textContent = err instanceof TypeError
         ? 'Could not reach the server, please try again'
@@ -66,5 +65,43 @@ function formatDistance(metres){
 
 // add google location link
 function showPlaces(){
-    return
+    rows.replaceChildren();
+
+    const text = filterInput.value.trim().toLowerCase();
+    const places = currentPlaces.filter((prop) =>
+        (prop.name || '').toLowerCase().includes(text) && (!phoneOnly.checked || prop.phone)
+    );
+
+    if (sortSelect.value == 'name'){
+        places.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
+    } else {
+        places.sort((a,b) => a.distance - b.distance);
+    }
+
+    table.hidden = places.length === 0;
+
+    for (const place of places){
+        const mapLink = document.createElement('a');
+        mapLink.href = `https://www.google.com/maps/dir/?api=1&destination=${place.lat}, ${place.lon}`;
+        mapLink.target = '_blank';
+        mapLink.rel = 'noopener';
+        mapLink.textContent = "Open in Maps";
+        mapLink.className = 'map-btn';
+        
+        const cells = [
+            place.name || 'Unnamed place',
+            place.address || '-',
+            formatDistance(place.distance),
+            place.phone || '-',
+            mapLink,
+        ];
+
+        const row = document.createElement('tr');
+        for (const content of cells){
+            const cell = document.createElement('td');
+            cell.append(content);
+            row.append(cell);
+        }
+        rows.append(row);
+    }
 }
