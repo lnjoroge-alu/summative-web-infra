@@ -34,6 +34,42 @@ app.get('/api/places', async (req,res) => {
 
     try {
         // fetch data from API
+        const geoParams = new URLSearchParams({text:area, limit: 1, format: 'json', apiKey: API_KEY});
+        const geoResponse = await fetch(`https://api.geoapify.com/v1/geocode/search?${geoParams}`);
+
+        if (!geoResponse.ok){
+            return res.status(502).json({error: `Map service returned status ${geoResponse.status}`});
+        }
+
+        const geoData = await geoResponse.json();
+        const location = geoData.results?.[0];
+        if (!location){
+            return res.status(404).json({error: "We couldn't find that area, try a nearby landmark or city"});
+        }
+
+        const placesParams = new URLSearchParams({
+            categories: category,
+            filter: `circle:${location.lon},${location.lat},${radius}`,
+            limit: 20,
+            apiKey: API_KEY
+        })
+        const placesResponse = await fetch(`https://api.geoapify.com/v2/places?${placesParams}`);
+        if (!placesResponse.ok){
+            return res.status(502).json({error: `Map service returned staus ${placesResponse.status}`});
+        }
+
+        const placesData = await placesResponse.json();
+
+        const places = placesData.features.map(({ properties: prop }) => ({
+            name: prop.name,
+            address: prop.fomratted,
+            distance: prop.distance,
+            lat: prop.lat,
+            lon:prop.lon,
+            phone: prop.contact?.phone || prop.datasource?.raw?.phone || null,
+        }));
+
+        
     } catch (err){
         console.error(err);
         res.status(500).json({error: 'Internal server error'});
