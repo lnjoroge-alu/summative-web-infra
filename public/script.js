@@ -64,7 +64,7 @@ function formatDistance(metres){
     return metres < 1000 ? `${Math.round(metres)} m` : `${(metres/1000).toFixed(1)} km`;
 }
 
-
+// add google location link
 function showPlaces(){
     return
 }
