@@ -56,7 +56,7 @@ app.get('/api/places', async (req,res) => {
         })
         const placesResponse = await fetch(`https://api.geoapify.com/v2/places?${placesParams}`);
         if (!placesResponse.ok){
-            return res.status(502).json({error: `Map service returned staus ${placesResponse.status}`});
+            return res.status(502).json({error: `Map service returned status ${placesResponse.status}`});
         }
 
         const placesData = await placesResponse.json();
