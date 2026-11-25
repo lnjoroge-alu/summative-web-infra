@@ -56,7 +56,7 @@ Requirements: Node.js 18 or newer.
    cp .env.example .env
    ```
 
-   Then edit `.env` and set your own Geoapify key (get one free by creating a project at [myprojects.geoapify.com](https://myprojects.geoapify.com/)):
+   Then edit `.env` and set your own Geoapify key (get one free by creating a project at myprojects.geoapify.com):
 
    ```
    GEOAPIFY_KEY=your_key_here
@@ -73,7 +73,7 @@ Requirements: Node.js 18 or newer.
 
 ## API used
 
-- [Geoapify](https://www.geoapify.com/). Two endpoints are used: the [Geocoding API](https://apidocs.geoapify.com/docs/geocoding/forward-geocoding/) (`/v1/geocode/search`) to turn the area into coordinates, and the [Places API](https://apidocs.geoapify.com/docs/places/) (`/v2/places`) to find places by category within a radius. Place data [OpenStreetMap contributors](https://www.openstreetmap.org/copyright). The free plan allows 3,000 credits per day and each uncached search costs 2 credits.
+- [Geoapify](https://www.geoapify.com/). Two endpoints are used: the Geocoding API (`/v1/geocode/search`) to turn the area into coordinates, and the Places API (`/v2/places`) to find places by category within a radius. Place data OpenStreetMap contributors. The free plan allows 3,000 credits per day and each uncached search costs 2 credits.
 
 ## Security notes
 
@@ -204,4 +204,3 @@ The `/api/places` route was also verified end-to-end through the load balancer (
 - Place and geocoding data: [Geoapify](https://www.geoapify.com/), map data © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
 - Directions links: [Google Maps URLs](https://developers.google.com/maps/documentation/urls/get-started)
 - HTTPS certificate: [Let's Encrypt](https://letsencrypt.org/)
-- Built with [Express](https://expressjs.com/) and [dotenv](https://github.com/motdotla/dotenv)
