@@ -2,6 +2,7 @@
 
 body {
     margin: 0;
+    font: 16px "Segoe UI", Roboto, sans-serif;
     color: #1c2430;
     background: #f4f6f8;
 }
