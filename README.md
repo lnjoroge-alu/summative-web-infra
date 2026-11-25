@@ -2,7 +2,7 @@
 
 A web application for finding the nearest pharmacy, hospital, clinic, ATM, bank or supermarket around any area. 
 
-When you are in an unfamiliar city and need medicine, cash or groceries quickly, mao apps bury the answer amongst ads, reviews and unrelated pins. Nearby Essentials does one thing: you type an area, pick what you need and how far you are willing to go, and it lists the closest options sorted by distance, with phone numbers and a one-click link to directions. Places come from the [Geoapify API](https://www.geoapify.com/), which is built on OpenStreetMap data.
+When you are in an unfamiliar city and need medicine, cash or groceries quickly, map apps bury the answer amongst ads, reviews and unrelated pins. Nearby Essentials does one thing: you type an area, pick what you need and how far you are willing to go, and it lists the closest options sorted by distance, with phone numbers and a one-click link to directions. Places come from the [Geoapify API](https://www.geoapify.com/), which is built on OpenStreetMap data.
 
 
 ## Assignment Resources
@@ -17,6 +17,17 @@ When you are in an unfamiliar city and need medicine, cash or groceries quickly,
 | Web 02 | http://13.222.150.198/ |
 | LB 01  | http://18.204.196.251/ |
 
+## Features
+
+- Search by area name (e.g. "Kacyiru, Kigali"), with no need to know coordinates
+- Six categories: pharmacy, hospital, clinic, ATM, bank and supermarket
+- Search radius of 500 m, 1 km, 2 km or 5 km
+- Results table with name, address, distance, phone number and an Open in Maps button for Google Maps directions
+- Sort by nearest first or name A-Z, filter by name, and show only places with a phone number (client-side, no extra API calls)
+- Graceful error handling: friendly messages for an area that can't be found, empty results, map service failures and lost connections
+- Input validation: the area must be 2-100 characters, checked in the browser and again on the server
+- Server-side caching: identical searches within 1 hour are answered from cache (shown by the `X-Cache: HIT/MISS` header), saving API credits
+- `/health` endpoint used by the load balancer's health checks
 
 ## How it works
 
