@@ -21,7 +21,7 @@ app.get('/api/places', async (req,res) => {
     const {area, category, radius} = req.query;
 
     if (!area || !category || !radius){
-        return res.status(400).json({errro: 'Please enter an area, category and radius'});  
+        return res.status(400).json({error: 'Please enter an area, category and radius'});  
     }
 
     const cacheKey = `${area.trim().toLowerCase()} | ${category} | ${radius}`;
@@ -50,6 +50,7 @@ app.get('/api/places', async (req,res) => {
         const placesParams = new URLSearchParams({
             categories: category,
             filter: `circle:${location.lon},${location.lat},${radius}`,
+            bias: `proximity:${location.lon},${location.lat}`,
             limit: 20,
             apiKey: API_KEY
         })
