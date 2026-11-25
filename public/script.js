@@ -63,7 +63,7 @@ function formatDistance(metres){
     return metres < 1000 ? `${Math.round(metres)} m` : `${(metres/1000).toFixed(1)} km`;
 }
 
-// add google location link
+// sort search results
 function showPlaces(){
     rows.replaceChildren();
 
@@ -74,15 +74,16 @@ function showPlaces(){
 
     if (sortSelect.value == 'name'){
         places.sort((a,b) => (a.name || '').localeCompare(b.name || ''));
-    } else {
-        places.sort((a,b) => a.distance - b.distance);
+        } else {
+            places.sort((a,b) => a.distance - b.distance);
     }
 
     table.hidden = places.length === 0;
 
+    // add google location link
     for (const place of places){
         const mapLink = document.createElement('a');
-        mapLink.href = `https://www.google.com/maps/dir/?api=1&destination=${place.lat}, ${place.lon}`;
+        mapLink.href = `https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lon}`;
         mapLink.target = '_blank';
         mapLink.rel = 'noopener';
         mapLink.textContent = "Open in Maps";
