@@ -7,7 +7,7 @@ When you are in an unfamiliar city and need medicine, cash or groceries quickly,
 
 ## Assignment Resources
 
-- **Demo video:** [Link to Demo Video](TODO-add-demo-video-link)
+- **Demo video:** [Link to Demo Video](https://www.youtube.com/watch?v=ioXvvapPq5o)
 - **Deployed app:** [https://www.lnjoroge.tech](https://www.lnjoroge.tech)
 - **Login:** none required, the app has no user accounts. The API key is provided in the submission comment.
 
