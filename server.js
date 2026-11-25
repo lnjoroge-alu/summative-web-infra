@@ -24,6 +24,10 @@ app.get('/api/places', async (req,res) => {
         return res.status(400).json({error: 'Please enter an area, category and radius'});  
     }
 
+    if (area.trim().length < 2 || area.length > 100) {
+        return res.status(400).json({error: 'Area must be between 2 and 100 characters'});
+    }
+
     const cacheKey = `${area.trim().toLowerCase()} | ${category} | ${radius}`;
 
     const cached = cache.get(cacheKey);
