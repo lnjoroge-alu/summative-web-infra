@@ -1,4 +1,14 @@
 {
+  "name": "nearby-essentials",
+  "version": "1.0.0",
+  "description": "Find essentials in any city",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Leon Njoroge",
+  "license": "MIT",
+
   "dependencies": {
     "dotenv": "^18.0.10",
     "express": "^5.3.0"
